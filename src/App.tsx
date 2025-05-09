@@ -41,89 +41,40 @@ import "@ionic/react/css/palettes/dark.system.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { RTCToolsProvider } from "./contexts/rtc";
-import Rooms from "./pages/video-conferencing/Rooms";
-import { ProducingPage } from "./pages/video-conferencing/ProducingPage";
-import ConferenceRoom from "./pages/video-conferencing/ConferenceRoom";
-import { AsyncHelperProvider, useAsyncHelpersContext } from "./contexts/async-helpers";
-
-import { Loader } from "./components/Loader";
 import { AdminBoard } from "./pages/admin/AdminBoard";
-import { Chats } from "./pages/talkable/Chats";
 import { TalkableHome } from "./pages/talkable/TalkableHome";
 import { ChatRoomPage } from "./pages/talkable/ChatRoomPage";
 import { TalkableContextProvider } from "./contexts/talkables/talkable";
 import { TalkableUser } from "./pages/talkable/TalkableUser";
+import { AsyncHelperProvider } from "./contexts/async-helpers";
 
 setupIonicReact();
 
 const App: React.FC = () => (
-
   <IonApp>
     <TalkableContextProvider>
-      
-    <RTCToolsProvider>
-        <AsyncHelperProvider>
-          <IonReactRouter>
-              
-            <IonTabs>
-              <IonRouterOutlet>
-               <Route
-               exact
-               path={"/talkable"}
-               component={TalkableHome}
-               />
-                
-                <Route
-                  exact 
-                  path={"/talkable/chat-room/:chatId"}
-                  component={ChatRoomPage}
-                />
+      <AsyncHelperProvider>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route exact path={"/talkable"} component={TalkableHome} />
 
-                <Route 
-                exact 
-                path="/hub"
-                component={TalkableUser}
-                  />
+            <Route
+              exact
+              path={"/talkable/chat-room/:chatId"}
+              component={ChatRoomPage}
+            />
 
-                <Route path={"/:tab(conference)/rooms"} component={Rooms} />
-                
-                <Route
-                  path={"/:tab(conference)/conference-room/:roomId"}
-                  component={ConferenceRoom}
-                />
+            <Route exact path="/hub" component={TalkableUser} />
 
-                <Route exact path="/">
-                  <Redirect to="/conference/rooms" />
-                </Route>
-                <Route path={"/admin"} component={AdminBoard}></Route>
-              </IonRouterOutlet>
-
-              <IonTabBar slot="bottom">
-                <IonTabButton tab="hub" href="/hub">
-                  <IonIcon aria-hidden="true" icon={ellipse} />
-                  <IonLabel>Hub</IonLabel>
-                </IonTabButton>
-                
-                <IonTabButton tab="talkable" href="/talkable">
-                  <IonIcon aria-hidden="true" icon={phonePortrait} />
-                  <IonLabel>Talkable</IonLabel>
-                </IonTabButton>
-                
-                <IonTabButton tab="conference" href="/conference/rooms">
-                  <IonIcon aria-hidden="true" icon={square} />
-                  <IonLabel>Conference</IonLabel>
-                </IonTabButton>
-              </IonTabBar>
-            </IonTabs>
-          </IonReactRouter>
-            
-        </AsyncHelperProvider>
-      
-    </RTCToolsProvider>
+            <Route exact path="/">
+              <Redirect to="/hub" />
+            </Route>
+            <Route path={"/admin"} component={AdminBoard}></Route>
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </AsyncHelperProvider>
     </TalkableContextProvider>
   </IonApp>
-
 );
 
 export default App;

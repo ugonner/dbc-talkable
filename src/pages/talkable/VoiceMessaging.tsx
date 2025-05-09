@@ -13,14 +13,13 @@ import {
   useIonToast,
 } from "@ionic/react";
 import { closeCircle } from "ionicons/icons";
-import { useTalkableContextStore } from "../../contexts/talkables/talkable";
+import { modelPath, useTalkableContextStore } from "../../contexts/talkables/talkable";
 import { IChat, IChatMessage, IChatUser, IMessageAttachment } from "../../shared/interfaces/talkables/chat";
 import { TalkableChatEvents } from "../../shared/enums/talkables/chat-event.enum";
 import audioBufferToWav from "audiobuffer-to-wav";
 
 import { IApiResponse } from "../../shared/dtos/responses/api-response";
 import { useAsyncHelpersContext } from "../../contexts/async-helpers";
-import { modelPath } from "../../components/conference-room/Captioning";
 import { APIBaseURL } from "../../api/base";
         
 export interface IVoiceMessagingProps {
