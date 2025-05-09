@@ -27,13 +27,11 @@ import * as vosk from "vosk-browser";
 import {
   audioSampleRate
 } from "../../pages/talkable/VoiceMessaging";
-import * as wav from "wav";
-import * as bufferToStream from "buffer-to-stream";
-import { modelPath } from "../../components/conference-room/Captioning";
 import { APIBaseURL, AppBaseUrl, appPort, getData, serverPort, TalkableSocketBaseURL } from "../../api/base";
 import { IApiResponse } from "../../shared/dtos/responses/api-response";
 import { closeCircle } from "ionicons/icons";
 
+export const modelPath = "/models/vosk-model-small-en-us-0.15.zip";
 export interface IStatusOverlayOptions {
   openOverlay: boolean;
   overlayEvent: TalkableChatEvents;

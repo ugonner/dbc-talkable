@@ -12,11 +12,10 @@ import {
   IonText,
 } from "@ionic/react";
 import { closeCircle } from "ionicons/icons";
-import { useTalkableContextStore } from "../../contexts/talkables/talkable";
+import { modelPath, useTalkableContextStore } from "../../contexts/talkables/talkable";
 import { IChat, IChatMessage, IChatUser } from "../../shared/interfaces/talkables/chat";
 import { userReactionsEmojis } from "../../shared/DATASETS/user-reaction-emojis";
 import { TalkableChatEvents } from "../../shared/enums/talkables/chat-event.enum";
-import { modelPath } from "../../components/conference-room/Captioning";
 
 export interface IVoicingProps {
   chat: IChat;
